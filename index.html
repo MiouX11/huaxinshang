@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>华新商（深圳）数字科技有限公司 - AI批量立案 | 法院系统直连 | 三天交付</title>
+    <meta name="description" content="华新商（深圳）数字科技有限公司是国内领先的AI批量立案平台。人民法院调解平台官方对接，AI系统三天交付，面向全国招募代理合作方。">
+    <meta name="keywords" content="AI批量立案,批量立案代理,人民法院调解平台,华新商,批量诉讼,法院调解">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <style>
+        :root {
+            --deep-blue: #1e56ac;
+            --navy: #174891;
+            --blue: #3b7dd8;
+            --light-blue: #d6e4f7;
+            --gold: #e8a830;
+            --white: #ffffff;
+            --gray-bg: #f2f5f9;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif; color: var(--text); line-height: 1.8; }
+
+
+        /* ====== NAVBAR ====== */
+        .top-nav { background: transparent; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: background 0.3s, box-shadow 0.3s; }
+        .top-nav.scrolled { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .top-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .company-name { font-size: 28px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap; flex-shrink: 0; text-shadow: 0 1px 4px rgba(0,0,0,0.4); padding-top: 98px; transition: color 0.3s, padding-top 0.3s, text-shadow 0.3s; }
+        .top-nav.scrolled .company-name { color: var(--deep-blue); text-shadow: none; padding-top: 0; }
+        .company-name:hover { text-decoration: none; color: #fff; }
+        .top-nav.scrolled .company-name:hover { color: var(--deep-blue); }
+        .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
+        .nav-menu > li { position: relative; }
+        .nav-menu > li > a { display: block; padding: 20px 14px; color: rgba(255,255,255,0.9); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; white-space: nowrap; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .top-nav.scrolled .nav-menu > li > a { color: var(--text); text-shadow: none; }
+        .nav-menu > li > a:hover { color: var(--gold); }
+        .top-nav.scrolled .nav-menu > li > a:hover { color: var(--blue); }
+        .nav-menu > li > a::after { content: ''; display: block; width: 0; height: 2px; background: var(--gold); transition: width 0.3s; margin-top: 2px; }
+        .top-nav.scrolled .nav-menu > li > a::after { background: var(--blue); }
+        .nav-menu > li > a:hover::after { width: 100%; }
+        .nav-ai-status { background: var(--gold) !important; color: var(--deep-blue) !important; font-weight: 700 !important; border-radius: 4px; padding: 8px 14px !important; margin: 10px 6px !important; animation: pulse-status 2s infinite; }
+        .nav-ai-status:hover { background: #dbb84e !important; color: var(--deep-blue) !important; transform: scale(1.05); }
+        @keyframes pulse-status { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); } 50% { box-shadow: 0 0 0 8px rgba(201,168,76,0); } }
+        .mobile-toggle { display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #fff; padding: 0 8px; flex-shrink: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .top-nav.scrolled .mobile-toggle { color: var(--deep-blue); text-shadow: none; }
+        @media (max-width: 768px) { .mobile-toggle { display: block; } }
+        /* ====== MODAL ====== */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,45,90,0.88); z-index: 9999; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: var(--white); border-radius: 12px; padding: 40px 36px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .modal-box .modal-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, #1e56ac, #3b7dd8); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 30px; }
+        .modal-box h3 { font-size: 20px; color: var(--deep-blue); margin-bottom: 8px; font-weight: 700; }
+        .modal-box p { font-size: 14px; color: var(--text-light); margin-bottom: 8px; }
+        .modal-box .modal-highlight { background: #fff8e1; border: 2px dashed var(--gold); border-radius: 8px; padding: 16px; margin: 20px 0; font-size: 18px; font-weight: 700; color: var(--deep-blue); letter-spacing: 1px; }
+        .modal-box .btn-close-modal { display: inline-block; background: var(--gold); color: var(--deep-blue); padding: 10px 32px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 14px; margin-top: 10px; }
+        .modal-box .btn-close-modal:hover { background: #dbb84e; }
+
+        /* ====== HERO BANNER ====== */
+        .hero { background: url('hero-bg.jpg') center/cover no-repeat; color: var(--white); padding: 180px 40px 60px; position: relative; min-height: 100vh; display: flex; align-items: flex-end; justify-content: flex-end; }
+        .hero::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(30,86,172,0.75) 0%, transparent 100%); z-index: 0; }
+        .hero .container { position: relative; z-index: 1; }
+        .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+        .hero h1 span { color: var(--gold); }
+        .hero .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+        .hero .hero-tag { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.3); padding: 6px 16px; border-radius: 4px; font-size: 13px; }
+        .hero .btn-hero { display: inline-block; background: var(--gold); color: var(--deep-blue); padding: 10px 28px; font-size: 14px; font-weight: 600; border-radius: 4px; text-decoration: none; transition: all 0.3s; }
+        .hero .btn-hero:hover { background: #dbb84e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); text-decoration: none; color: var(--deep-blue); }
+
+        /* ====== SECTION COMMON ====== */
+        .section { padding: 70px 0; }
+        .section-gray { background: var(--gray-bg); }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 30px; font-weight: 700; color: var(--deep-blue); margin-bottom: 8px; }
+        .section-title .divider { width: 60px; height: 3px; background: var(--gold); margin: 12px auto; }
+        .section-title p { color: var(--text-light); font-size: 15px; }
+
+        /* ====== ABOUT ====== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-image { background: linear-gradient(135deg, #1e56ac, #3b7dd8); border-radius: 8px; height: 340px; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 48px; font-weight: 700; letter-spacing: 4px; }
+        .about-text h3 { font-size: 24px; color: var(--deep-blue); margin-bottom: 16px; font-weight: 700; }
+        .about-text p { color: var(--text-light); margin-bottom: 14px; font-size: 15px; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 28px; }
+        .about-stat { text-align: center; padding: 20px 10px; background: var(--white); border-radius: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .about-stat .num { font-size: 32px; font-weight: 700; color: var(--blue); }
+        .about-stat .label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+
+        /* ====== PRODUCT ====== */
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .product-card { background: var(--white); border-radius: 8px; padding: 36px 24px; text-align: center; box-shadow: 0 3px 20px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; }
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .product-card .card-icon { width: 64px; height: 64px; margin: 0 auto 18px; background: linear-gradient(135deg, #1e56ac, #3b7dd8); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 28px; }
+        .product-card h4 { font-size: 18px; font-weight: 700; color: var(--deep-blue); margin-bottom: 10px; }
+        .product-card p { font-size: 14px; color: var(--text-light); }
+
+        /* ====== PROCESS ====== */
+        .process-steps { display: flex; justify-content: space-between; position: relative; }
+        .process-steps::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: #ddd; z-index: 0; }
+        .process-step { text-align: center; position: relative; z-index: 1; flex: 1; }
+        .process-step .step-num { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #1e56ac, #3b7dd8); color: var(--white); font-size: 28px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; border: 4px solid var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .process-step h5 { font-size: 16px; font-weight: 700; color: var(--deep-blue); }
+        .process-step p { font-size: 13px; color: var(--text-light); }
+
+        /* ====== AGENT RECRUIT ====== */
+        .agent-bg { background: linear-gradient(135deg, #1e56ac, #2d6ec9); color: var(--white); padding: 70px 0; }
+        .agent-bg .section-title h2 { color: var(--white); }
+        .agent-bg .section-title p { color: rgba(255,255,255,0.7); }
+        .agent-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .agent-left .highlight-box { background: rgba(255,255,255,0.08); border-left: 4px solid var(--gold); padding: 20px 24px; margin-bottom: 20px; border-radius: 0 6px 6px 0; }
+        .agent-left .highlight-box h5 { color: var(--gold); margin-bottom: 8px; }
+        .agent-left .highlight-box p { color: rgba(255,255,255,0.85); font-size: 14px; margin: 0; }
+        .agent-right { text-align: center; }
+        .agent-card { background: var(--white); color: var(--text); border-radius: 10px; padding: 36px 24px; }
+        .agent-card .income-row { display: flex; justify-content: space-around; padding: 14px 0; border-bottom: 1px solid #eee; }
+        .agent-card .income-row:last-child { border: none; }
+        .agent-card .income-num { font-size: 28px; font-weight: 700; color: var(--blue); }
+        .agent-card .income-label { font-size: 13px; color: var(--text-light); }
+        .btn-agent { display: inline-block; background: var(--gold); color: var(--deep-blue); padding: 14px 40px; font-size: 16px; font-weight: 700; border-radius: 4px; text-decoration: none; margin-top: 24px; transition: all 0.3s; }
+        .btn-agent:hover { background: #dbb84e; text-decoration: none; color: var(--deep-blue); transform: translateY(-2px); }
+
+        /* ====== MEDIA / VIDEO SECTION ====== */
+        .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .media-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 3px 20px rgba(0,0,0,0.06); text-align: center; }
+        .media-card img { width: 100%; height: 260px; object-fit: cover; display: block; }
+        .media-card .media-body { padding: 16px; }
+        .media-card .media-body h5 { font-size: 15px; color: var(--deep-blue); font-weight: 600; }
+        .media-card .media-body .media-tag { display: inline-block; background: #e74c3c; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 2px; margin-bottom: 6px; }
+
+        /* ====== DOCUMENTS ====== */
+        .doc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .doc-card { background: var(--white); border-radius: 6px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); border-left: 4px solid #d32f2f; transition: all 0.3s; text-decoration: none; color: var(--text); display: block; }
+        .doc-card:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(211,47,47,0.15); text-decoration: none; color: var(--text); }
+        .doc-card .doc-badge { display: inline-block; background: #d32f2f; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 2px; margin-bottom: 8px; }
+        .doc-card h6 { font-size: 14px; font-weight: 700; color: var(--deep-blue); margin-bottom: 4px; }
+        .doc-card .doc-source { font-size: 12px; color: #999; }
+
+        /* ====== CONTACT ====== */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-info .info-item { display: flex; align-items: flex-start; margin-bottom: 20px; }
+        .contact-info .info-icon { width: 40px; height: 40px; background: var(--deep-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; margin-right: 14px; flex-shrink: 0; }
+        .contact-info .info-text h6 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+        .contact-info .info-text p { font-size: 14px; color: var(--text-light); margin: 0; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 14px; font-size: 14px; }
+        .contact-form textarea { height: 100px; resize: vertical; }
+        .contact-form button { background: var(--deep-blue); color: #fff; border: none; padding: 12px 36px; font-size: 15px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        .contact-form button:hover { background: var(--blue); }
+
+        /* ====== FOOTER ====== */
+        .footer { background: #1e56ac; color: rgba(255,255,255,0.85); padding: 40px 0 24px; font-size: 14px; }
+        .footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        .footer .footer-left h5 { color: var(--white); font-size: 18px; margin-bottom: 10px; }
+        .footer .footer-left p { margin: 4px 0; }
+        .footer .footer-right { text-align: right; }
+        .footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .footer a:hover { color: var(--gold); }
+        .footer-bottom { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 13px; }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .top-nav-inner { flex-wrap: wrap; height: auto; padding: 10px 15px; }
+            .nav-menu { display: none; flex-direction: column; width: 100%; background: rgba(0,0,0,0.9); border-radius: 0 0 8px 8px; padding: 8px 0; }
+            .nav-menu.active { display: flex; }
+            .nav-menu > li > a { padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.9) !important; }
+            .nav-menu > li > a:hover { color: var(--gold) !important; }
+            .hero h1 { font-size: 26px; }
+            .hero { padding: 50px 0; }
+            .about-grid, .agent-content, .contact-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
+            .doc-grid { grid-template-columns: 1fr 1fr; }
+            .process-steps { flex-direction: column; gap: 20px; }
+            .process-steps::before { display: none; }
+            .media-grid { grid-template-columns: 1fr; }
+            .footer .container { flex-direction: column; text-align: center; }
+            .footer .footer-right { text-align: center; margin-top: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <div class="top-nav">
+        <div class="top-nav-inner">
+            <a class="company-name" href="#">华新商（深圳）数字科技有限公司</a>
+            <button class="mobile-toggle" id="mobileToggle">&#9776;</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#product">产品服务</a></li>
+                <li><a href="#agent">代理合作</a></li>
+                <li><a href="javascript:void(0)" onclick="openModal()" class="nav-ai-status">查看AI工作状态</a></li>
+                <li><a href="#docs" class="nav-docs" style="color:#ff6b6b !important;font-weight:700;">官方文件</a></li>
+                <li><a href="http://tiaojie.court.gov.cn" target="_blank">人民法院调解平台</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="home">
+        <div class="container" style="position:relative;z-index:1;text-align:right;">
+            <h1>AI批量立案 <span>三天交付</span></h1>
+            <p class="hero-subtitle">人民法院调解平台官方框架 · 法院系统直连 · 全流程智能化</p>
+            <p class="hero-subtitle">面向全国招募代理合作方</p>
+            <div class="hero-tags" style="justify-content:flex-end;">
+                <span class="hero-tag">法院系统直连</span>
+                <span class="hero-tag">三天交付结果</span>
+                <span class="hero-tag">AI全自动立案</span>
+            </div>
+            <a href="#agent" class="btn-hero">了解代理合作 →</a>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于华新商数字</h2>
+                <div class="divider"></div>
+                <p>专注AI批量立案，让每一个有资源的人都能参与法律科技红利</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image">华新商</div>
+                <div class="about-text">
+                    <h3>华新商（深圳）数字科技有限公司</h3>
+                    <p>华新商成立于深圳，是一家专注于<strong>AI批量立案</strong>领域的法律科技公司。2023年，中国不良资产市场规模已达<strong>10.79万亿元</strong>，个贷不良案件年增速超过34%。在如此庞大的市场体量下，传统人工立案的效率瓶颈日益凸显——这正是华新商要解决的核心问题。</p>
+                    <p>我们基于人民法院调解平台官方框架，自主研发AI批量立案系统，实现案件要素抽取、文书生成、法院系统对接的全流程自动化。目前系统已覆盖<strong>全国31个省份、对接4000+法院</strong>，累计处理案件量突破千件。</p>
+                    <p>目前，华新商面向全国招募<strong>代理合作方</strong>。你负责组织人手，我们负责AI批量立案。三天出结果，佣金透明。</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="num">10.79万亿</div>
+                            <div class="label">不良资产市场规模</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="num">31省</div>
+                            <div class="label">法院对接覆盖</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="num">3天</div>
+                            <div class="label">交付周期</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCT ==================== -->
+    <section class="section section-gray" id="product">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心产品与服务</h2>
+                <div class="divider"></div>
+                <p>AI驱动的批量立案全流程解决方案</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="card-icon">01</div>
+                    <h4>AI批量立案系统</h4>
+                    <p>要素自动抽取、文书智能生成、案件批量提交。累计处理案件<strong>1000+</strong>件，覆盖债权人数<strong>1400+</strong>人，传统人工立案到AI自动化的效率跃升。</p>
+                </div>
+                <div class="product-card">
+                    <div class="card-icon">02</div>
+                    <h4>法院系统直连</h4>
+                    <p>正规技术通道对接人民法院调解平台与电子诉讼系统，已覆盖全国<strong>31个省份、4000+法院</strong>，确保每一个案件都在官方框架内合规运行。</p>
+                </div>
+                <div class="product-card">
+                    <div class="card-icon">03</div>
+                    <h4>代理合作方案</h4>
+                    <p>你找人，我们立案。佣金从法院调解补贴中产生，按件结算，透明分润。每个自然人月做<strong>100案</strong>，单案补贴<strong>100元</strong>，收益清晰可算。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROCESS ==================== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>合作流程</h2>
+                <div class="divider"></div>
+                <p>三步走，简单清晰</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h5>代理找人</h5>
+                    <p>找到有身份证的自然人<br>在人民法院调解平台注册<br>每人缴纳2000元押金</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h5>华新商AI立案</h5>
+                    <p>AI系统自动批量立案<br>法院系统直连提交<br>三天内完成全部流程</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h5>法院给钱</h5>
+                    <p>每案补贴100元<br>月做100案=月入10000元<br>佣金按比例结算</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== AGENT RECRUIT ==================== -->
+    <section class="agent-bg" id="agent">
+        <div class="container">
+            <div class="section-title">
+                <h2>招募代理合作方</h2>
+                <div class="divider"></div>
+                <p>你不需要懂法律，不需要跑法院。你只需要找到人。</p>
+            </div>
+            <div class="agent-content">
+                <div class="agent-left">
+                    <div class="highlight-box">
+                        <h5> 你需要做什么</h5>
+                        <p>找到有身份证的自然人 → 协助在人民法院调解平台注册 → 缴纳2000元/人押金 → 等待立案完成 → 拿佣金</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h5> 我们做什么</h5>
+                        <p>AI批量立案系统 → 法院通道对接 → 文书自动生成 → 三天交付结果 → 佣金结算保障</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h5>你不需要</h5>
+                        <p> 不懂法律没关系 &nbsp;  不用跑法院 &nbsp;  不用做文书 &nbsp;  不碰资金</p>
+                    </div>
+                </div>
+                <div class="agent-right">
+                    <div class="agent-card">
+                        <h5 style="color:var(--deep-blue);font-weight:700;margin-bottom:16px;"> 收益测算</h5>
+                        <div class="income-row">
+                            <div><div class="income-num">10人</div><div class="income-label">管理人数</div></div>
+                            <div style="font-size:24px;color:#ccc;">→</div>
+                            <div><div class="income-num">≈1万</div><div class="income-label">月佣金收入</div></div>
+                        </div>
+                        <div class="income-row">
+                            <div><div class="income-num">50人</div><div class="income-label">管理人数</div></div>
+                            <div style="font-size:24px;color:#ccc;">→</div>
+                            <div><div class="income-num">≈5万</div><div class="income-label">月佣金收入</div></div>
+                        </div>
+                        <div class="income-row">
+                            <div><div class="income-num">100人</div><div class="income-label">管理人数</div></div>
+                            <div style="font-size:24px;color:#ccc;">→</div>
+                            <div><div class="income-num">≈10万</div><div class="income-label">月佣金收入</div></div>
+                        </div>
+                        <a href="#contact" class="btn-agent">申请成为代理 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 痛点与顾虑 -->
+            <div class="pain-concern-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:50px;">
+                <!-- 我们的痛点 -->
+                <div>
+                    <h3 style="color:var(--white);font-size:20px;font-weight:700;margin-bottom:20px;border-bottom:2px solid var(--gold);padding-bottom:10px;">我们的痛点</h3>
+                    <div class="highlight-box">
+                        <h5>痛点一：人手不足</h5>
+                        <p>最高法规定，一个自然人每月只能提交不超过100个案件。这意味着想要扩大规模，就必须有足够多的自然人参与。单靠我们自己的力量远远不够，所以我们需要代理合作方来组织人手。</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h5>痛点二：押金不足</h5>
+                        <p>每个案件平均需要3000元的押金。案件量越大，所需押金总额越高。如果由一个主体承担全部押金，资金压力巨大。通过代理模式分散押金，每个自然人承担自己的2000元，整体资金压力被合理分摊。</p>
+                    </div>
+                </div>
+                <!-- 你的顾虑 -->
+                <div>
+                    <h3 style="color:var(--white);font-size:20px;font-weight:700;margin-bottom:20px;border-bottom:2px solid var(--gold);padding-bottom:10px;">你的顾虑</h3>
+                    <div class="highlight-box">
+                        <h5>顾虑一：押金安全吗？</h5>
+                        <p>所有七万元以上的押金，均由微众银行开具保函。资金安全有银行级别的保障，不存在押金被挪用或无法退回的风险。</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h5>顾虑二：回款有保障吗？</h5>
+                        <p>公司承诺三天回款。如果法院未及时打款，华新商先行垫付，确保你的佣金按时到账。你不需要担心法院结算周期的问题，我们承担这个时间差。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 什么是保函 -->
+            <div style="margin-top:40px;background:rgba(255,255,255,0.06);border-radius:8px;padding:28px 30px;">
+                <h3 style="color:var(--gold);font-size:18px;font-weight:700;margin-bottom:16px;">什么是银行保函？</h3>
+                <p style="color:rgba(255,255,255,0.9);font-size:14px;line-height:2;">
+                    银行保函（Letter of Guarantee）是指银行应申请人（华新商）的请求，向受益人（你）开立的一种书面信用担保凭证。<strong style="color:var(--gold);">如果华新商未能按约定返还押金，银行将无条件向受益人支付保函金额内的全部款项。</strong>
+                </p>
+                <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:2;">
+                    简单来说：你的押金不是交给华新商就没了，而是有微众银行在背后担保。七万元以上的押金全部纳入保函覆盖范围——银行替你兜底，资金安全对标银行存款级别。
+                </p>
+                <p style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:10px;">
+                    下面这个视频用大白话解释了保函是什么：
+                </p>
+                <div style="margin-top:14px;text-align:center;">
+                    <a href="https://v.douyin.com/ASv8SQ26oJU/" target="_blank" style="display:inline-block;background:#e74c3c;color:#fff;padding:10px 28px;border-radius:4px;text-decoration:none;font-size:14px;font-weight:600;">查看：10年银行人手把手教你 · 保函是什么</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MEDIA / DOUYIN ==================== -->
+    <section class="section" id="media">
+        <div class="container">
+            <div class="section-title">
+                <h2>视频中心</h2>
+                <div class="divider"></div>
+                <p>关注我们的抖音，了解AI批量立案最新动态</p>
+            </div>
+            <div class="media-grid">
+                <div class="media-card">
+                    <img src="发现更多精彩视频 - 抖音搜索 和另外 3 个页面 - 个人 - Microsoft​ Edge 2026_7_13 14_58_27.png" alt="带你读懂官方文件">
+                    <div class="media-body">
+                        <span class="media-tag">抖音</span>
+                        <h5>带你读懂最高法官方文件——AI批量立案释放什么信号？</h5>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <img src="发现更多精彩视频 - 抖音搜索 和另外 3 个页面 - 个人 - Microsoft​ Edge 2026_7_13 14_58_35.png" alt="律师要失业了">
+                    <div class="media-body">
+                        <span class="media-tag">抖音</span>
+                        <h5>律师可能要失业了？AI批量立案你怎么看？</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== OFFICIAL DOCUMENTS ==================== -->
+    <section class="section section-gray" id="docs">
+        <div class="container">
+            <div class="section-title">
+                <h2>官方文件与合规依据</h2>
+                <div class="divider"></div>
+                <p>所有业务均在人民法院调解平台官方框架内开展，点击直达最高人民法院原文</p>
+            </div>
+            <div class="doc-grid">
+                <a href="https://www.court.gov.cn/zixun/xiangqing/382471.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法发〔2022〕33号</span>
+                    <h6>关于规范和加强人工智能司法应用的意见</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+                <a href="https://www.court.gov.cn/fabu/xiangqing/339521.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法释〔2021〕23号</span>
+                    <h6>人民法院在线调解规则</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+                <a href="https://www.court.gov.cn/fabu/xiangqing/26061.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法发〔2016〕21号</span>
+                    <h6>关于进一步推进案件繁简分流优化司法资源配置的若干意见</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+                <a href="https://www.court.gov.cn/fabu/xiangqing/218511.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法发〔2020〕1号</span>
+                    <h6>关于进一步完善委派调解机制的指导意见</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+                <a href="https://www.court.gov.cn/fabu/xiangqing/324741.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法发〔2021〕25号</span>
+                    <h6>关于深化人民法院一站式多元解纷机制建设的实施意见</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+                <a href="https://www.court.gov.cn/zixun/xiangqing/487891.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">20部门联合〔2026〕</span>
+                    <h6>关于深化"总对总"多元化纠纷解决机制改革的意见</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+                <a href="http://www.sdcourt.gov.cn/jnancqqfy/yhyshj14/tzwj/7935226/2021111615321963586.pdf" target="_blank" class="doc-card">
+                    <span class="doc-badge">济长法发〔2021〕16号</span>
+                    <h6>人民调解员案件补贴发放办法（试行）</h6>
+                    <span class="doc-source">济南长清区法院 · sdcourt.gov.cn</span>
+                </a>
+                <a href="http://gongbao.court.gov.cn/Details/165debc9eea5369dac05ab189b0046.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法发〔2020〕8号</span>
+                    <h6>关于人民法院深化"分调裁审"机制改革的意见</h6>
+                    <span class="doc-source">最高人民法院公报 · court.gov.cn</span>
+                </a>
+                <a href="https://www.court.gov.cn/zixun/xiangqing/492681.html" target="_blank" class="doc-card">
+                    <span class="doc-badge">法发〔2024〕16号</span>
+                    <h6>关于在审判工作中促进提质增效的指导意见</h6>
+                    <span class="doc-source">最高人民法院 · court.gov.cn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+                <div class="divider"></div>
+                <p>对代理合作感兴趣？留下联系方式，我们将在24小时内与你联系</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">址</div>
+                        <div class="info-text">
+                            <h6>公司地址</h6>
+                            <p>深圳市宝安区前海卓越时代广场A座2203</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">话</div>
+                        <div class="info-text">
+                            <h6>联系电话</h6>
+                            <p>请通过表单留言，我们将主动联系</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">抖</div>
+                        <div class="info-text">
+                            <h6>抖音账号</h6>
+                            <p>关注我们的抖音，了解AI批量立案最新政策解读</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">时</div>
+                        <div class="info-text">
+                            <h6>工作时间</h6>
+                            <p>周一至周五 9:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" placeholder="你的姓名 *" required>
+                    <input type="text" placeholder="手机号码 *" required>
+                    <input type="text" placeholder="现有团队规模（如：10人）">
+                    <textarea placeholder="留言内容（可选）"></textarea>
+                    <button type="submit">提交咨询 →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-left">
+                <h5>华新商（深圳）数字科技有限公司</h5>
+                <p>AI批量立案 · 法院系统直连 · 三天交付</p>
+                <p>面向全国招募代理合作方</p>
+            </div>
+            <div class="footer-right">
+                <p><a href="#home">首页</a> | <a href="#about">关于我们</a> | <a href="#product">产品服务</a> | <a href="#agent">代理合作</a></p>
+                <p><a href="#docs">官方文件</a> | <a href="#media">视频中心</a> | <a href="#contact">联系我们</a></p>
+                <p style="margin-top:8px;"> 关注抖音，搜索「AI批量立案」</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                Copyright © 2026 华新商（深圳）数字科技有限公司 All Rights Reserved. &nbsp;|&nbsp; <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备XXXXXXXX号</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL ==================== -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box">
+            <div class="modal-icon">AI</div>
+            <h3>查看AI工作状态</h3>
+            <p>AI批量立案系统实时仪表盘</p>
+            <p style="font-size:13px;color:#999;">添加客服微信获取登录密码</p>
+            <div class="modal-highlight">客服微信：__________</div>
+            <p style="font-size:12px;color:#999;">获取密码后点击下方按钮进入</p>
+            <a href="https://mioux11.github.io/ai-filing-dashboard/master.html" target="_blank" class="btn-close-modal">进入AI工作台</a>
+            <p style="margin-top:12px;font-size:12px;color:#aaa;">或点击空白处关闭</p>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // 导航链接点击后关闭移动菜单
+        document.querySelectorAll('.nav-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    var offset = 70; // navbar高度
+                    var position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: position, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        var topNav = document.querySelector('.top-nav');
+        var heroSection = document.querySelector('.hero');
+        window.addEventListener('scroll', function() {
+            if (heroSection && window.scrollY > heroSection.offsetHeight - 80) {
+                topNav.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
+            }
+        });
+
+        // 弹窗控制
+        function openModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // 滚动时导航高亮
+        window.addEventListener('scroll', function() {
+            var sections = document.querySelectorAll('section[id]');
+            var scrollPos = window.scrollY + 100;
+            sections.forEach(function(section) {
+                var top = section.offsetTop;
+                var height = section.offsetHeight;
+                var id = section.getAttribute('id');
+                if (scrollPos >= top && scrollPos < top + height) {
+                    document.querySelectorAll('.nav-menu a').forEach(function(a) {
+                        a.style.color = '';
+                    });
+                    var activeLink = document.querySelector('.nav-menu a[href="#' + id + '"]');
+                    if (activeLink) activeLink.style.color = 'var(--blue)';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
