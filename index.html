@@ -214,7 +214,8 @@
             .top-nav.scrolled .nav-menu > li > a { color: #fff !important; }
             .nav-ai-status { display: inline-block !important; margin: 6px 12px !important; padding: 8px 16px !important; }
             /* Hero */
-            .hero { min-height: 70vh; padding: 80px 16px 40px; align-items: flex-end; }
+            .hero { min-height: auto; padding: 56% 16px 24px 16px; align-items: flex-end; background-size: 100% auto; background-position: top center; }
+            .hero::before { height: 40%; }
             .hero .container { text-align: right; padding: 0; }
             .hero h1 { font-size: 24px; letter-spacing: 1px; }
             .hero .hero-subtitle { font-size: 12px; }
@@ -273,7 +274,7 @@
             .btn-hero { animation: none; }
         }
         @media (max-width: 480px) {
-            .hero { min-height: 60vh; padding: 70px 12px 30px; }
+            .hero { padding: 50% 12px 20px 12px; background-size: 100% auto; background-position: top center; }
             .hero h1 { font-size: 20px; }
             .hero .hero-tag { font-size: 10px; padding: 4px 8px; }
             .hero .btn-hero { font-size: 12px; padding: 6px 16px; }
